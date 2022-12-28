@@ -34,11 +34,10 @@ void adduser() {
 	printf("Enter student name and scores:\n");
 	scanf("%s %d %d %d %d %d", NewNode->std.name, &NewNode->std.score[0], &NewNode->std.score[1], &NewNode->std.score[2], &NewNode->std.score[3], &NewNode->std.score[4]);
 
-	printf("Sucess...\n\n");
-	system("pause");
-	system("cls");
+	printf("%s %d %d %d %d %d\n\n", NewNode->std.name, &NewNode->std.score[0], &NewNode->std.score[1], &NewNode->std.score[2], &NewNode->std.score[3], &NewNode->std.score[4]);
 }
 
 int main(){
+	adduser();
     return 0;
 }
