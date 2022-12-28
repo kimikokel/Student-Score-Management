@@ -14,11 +14,7 @@ typedef struct Node{
 
 node *head = NULL;
 
-void adduser(student name, student score){
-    
-}
-
-void InputStudent() {
+void adduser() {
 	node* NewNode = (node*)malloc(sizeof(node));
 	NewNode->next = NULL;
 
@@ -35,10 +31,10 @@ void InputStudent() {
 		p->next = NewNode;
 	}
 
-	printf("请输入学生姓名：\n");
+	printf("Enter student name and scores:\n");
 	scanf("%s %d %d %d %d %d", NewNode->std.name, &NewNode->std.score[0], &NewNode->std.score[1], &NewNode->std.score[2], &NewNode->std.score[3], &NewNode->std.score[4]);
 
-	printf("学生信息录入成功。\n\n");
+	printf("Sucess...\n\n");
 	system("pause");
 	system("cls");
 }
