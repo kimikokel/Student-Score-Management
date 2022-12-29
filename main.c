@@ -2,56 +2,77 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct user{
+typedef struct student{
     char name[50];
-    int score[100];
-}student;
+    int score1;
+	int score2;
+	int score3;
+	int score4;
+	int score5;
+}Student;
 
-typedef struct Node{
-    student std;
-    struct Node* next;
-}node;
+typedef struct node{
+    Student std;
+    struct node* next;
+}Node;
 
-node *head = NULL;
+Node *head = NULL;
 
 int num_exe(){
 	//how many executions
 	printf("How many students are there?\n");
 	int buff;
-	scanf("%d",buff);
+	scanf("%d",&buff);
 	return buff;
 }
 
-void adduser() {
-	node* NewNode = (node*)malloc(sizeof(node));
-	NewNode->next = NULL;
-
-	node* p = head;
-	while (head != NULL && p->next != NULL)
-	{
-		p = p->next;
-	}
-
-	if (head == NULL) {
-		head = NewNode;
-	}
-	else {
-		p->next = NewNode;
-	}
+Node* add_user() {
+	Node* node = (Node*)malloc(sizeof(Node));
+	node->next = NULL;
 
 	printf("Enter student name and scores:\n");
-	scanf("%s %d %d %d %d %d", NewNode->std.name, &NewNode->std.score[0], &NewNode->std.score[1], &NewNode->std.score[2], &NewNode->std.score[3], &NewNode->std.score[4]);
-	//&NewNode->std.score->next
+	scanf("%s %d %d %d %d %d", 
+		node->std.name, 
+		&(node->std.score1),
+		&(node->std.score2), 
+		&(node->std.score3), 
+		&(node->std.score4), 
+		&(node->std.score5));
 
-	printf("%s %d %d %d %d %d\n\n", NewNode->std.name, &NewNode->std.score[0], &NewNode->std.score[1], &NewNode->std.score[2], &NewNode->std.score[3], &NewNode->std.score[4]);
-	printf("Success...\n\n");
+	return node;
+}
+
+void print_user(Node* user){
+	printf("%s %d %d %d %d %d\n",
+	user->std.name, 
+	user->std.score1,
+	user->std.score2, 
+	user->std.score3, 
+	user->std.score4, 
+	user->std.score5);
 }
 
 int main(){
-	// int loops = num_exe();
-	adduser();
-	// for(int i=0; i<loops; i++){
-	// 	adduser();
-	// }
+	int num = num_exe();
+	Node* ptr = NULL;
+	Node* head = NULL;
+
+	for(int i=0; i<num; i++){
+		Node* user = add_user();		
+		if (head == NULL){
+			head = user;
+			ptr = user;
+		}else{
+			ptr->next = user;
+			ptr = ptr->next;
+		}
+	}
+	printf("\noutput:\n");
+	ptr = head;
+	while (ptr != NULL){
+		print_user(ptr);
+		ptr = ptr->next;
+	}
+
     return 0;
 }
