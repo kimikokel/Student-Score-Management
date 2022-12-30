@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
 typedef struct student{
     char name[50];
@@ -18,9 +18,8 @@ typedef struct node{
 
 Node *head = NULL;
 
-int num_exe(){
-	//how many executions
-	printf("How many students are there?\n");
+int n_num(){
+	printf("n: \n");
 	int buff;
 	scanf("%d",&buff);
 	return buff;
@@ -30,7 +29,7 @@ Node* add_user() {
 	Node* node = (Node*)malloc(sizeof(Node));
 	node->next = NULL;
 
-	printf("Enter student name and scores:\n");
+	// printf("Enter student name and scores:\n");
 	scanf("%s %d %d %d %d %d", 
 		node->std.name, 
 		&(node->std.score1),
@@ -52,12 +51,115 @@ void print_user(Node* user){
 	user->std.score5);
 }
 
+Node* query(Node* user, int id){
+	Node* ptr = user;
+	int max = -1000;
+	int min = 1000;
+	// while(ptr != NULL){
+	// 	if(max < ptr->std.score1){
+	// 		max = ptr->std.score1;
+	// 		ptr = ptr->next;
+	// 	}
+	// }
+	// ptr = user;
+
+///////fucking skipped the first user fuck this shit diu
+
+	while(ptr != NULL){
+		printf("min origin: %d, next is:\n",min);
+		if(min > ptr->std.score1){
+			min = ptr->std.score1;
+			printf("min now: %d, next is:\n",min);
+			ptr = ptr->next;
+		}
+	}
+	printf("min: %d max: %d\n",min,max);
+	// switch(id){
+	// 	case 1:
+	// 		while(ptr != NULL){
+	// 			if(max < ptr->std.score1){
+	// 				max = ptr->std.score1;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		while(ptr != NULL){
+	// 			if(min > ptr->std.score1){
+	// 				min = ptr->std.score1;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		printf("min: %d max: %d\n",min,max);
+	// 		break;
+	// 	case 2:
+	// 		while(ptr != NULL){
+	// 			if(max < ptr->std.score2){
+	// 				max = ptr->std.score2;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		while(ptr != NULL){
+	// 			if(min > ptr->std.score2){
+	// 				min = ptr->std.score2;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		printf("min: %d max: %d\n",min,max);
+	// 		break;
+	// 	case 3:
+	// 		while(ptr != NULL){
+	// 			if(max < ptr->std.score3){
+	// 				max = ptr->std.score3;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		while(ptr != NULL){
+	// 			if(min > ptr->std.score3){
+	// 				min = ptr->std.score3;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		printf("min: %d max: %d\n",min,max);
+	// 		break;
+	// 	case 4:
+	// 		while(ptr != NULL){
+	// 			if(max < ptr->std.score4){
+	// 				max = ptr->std.score4;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		while(ptr != NULL){
+	// 			if(min > ptr->std.score4){
+	// 				min = ptr->std.score4;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		printf("min: %d max: %d\n",min,max);
+	// 		break;
+	// 	case 5:
+	// 		while(ptr != NULL){
+	// 			if(max < ptr->std.score5){
+	// 				max = ptr->std.score5;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		while(ptr != NULL){
+	// 			if(min > ptr->std.score5){
+	// 				min = ptr->std.score5;
+	// 				ptr = ptr->next;
+	// 			}
+	// 		}
+	// 		printf("min: %d max: %d\n",min,max);
+	// 		break;
+	// }
+	return user;
+}
+
 int main(){
-	int num = num_exe();
+	int n = n_num();
 	Node* ptr = NULL;
 	Node* head = NULL;
 
-	for(int i=0; i<num; i++){
+	for(int i=0; i<n; i++){
 		Node* user = add_user();		
 		if (head == NULL){
 			head = user;
@@ -67,6 +169,22 @@ int main(){
 			ptr = ptr->next;
 		}
 	}
+	int q = n_num();
+
+	for(int i=0; i<q; i++){
+		int id;
+		char keyword[6];
+		scanf("%s %d",keyword,&id);
+		printf("keyword: %s id: %d\n",keyword,id);
+
+		if(strcmp(keyword,"query")){
+			printf("no\n");
+		}else{
+			printf("yes\n");
+			query(ptr,q);
+		}
+	}
+
 	printf("\noutput:\n");
 	ptr = head;
 	while (ptr != NULL){
