@@ -120,11 +120,11 @@ void list(Node* head, int n){
 		i++;
 	}
 	qsort((void*)std, i, sizeof(std[0]), comparator);
+	printf("find me and del this then done ;)");
 	printArr(std, n);
 }
 
 int main(){
-	//done
 	int n = n_num();
 	Node* ptr = NULL;
 	Node* head = NULL;
@@ -139,7 +139,7 @@ int main(){
 			ptr = ptr->next;
 		}
 	}
-	int q = n_num();
+	int q = n_num(); 
 
 	for(int i=0; i<q; i++){
 		int id;
