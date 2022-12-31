@@ -58,6 +58,7 @@ void print_user(Node* user){
 		get_sum(&(user->std))
 	);
 }
+
 int get_score(Node* ptr, int id){
 	switch(id){
 		case 1: return ptr->std.score1;
@@ -85,17 +86,19 @@ void query(Node* head, int id){
 	printf("%d %d\n",min,max);
 }
 
-
-
 int comparator(const void *p, const void *q) 
 {
-	Student* Studentp = (Student*)p;
-	Student* Studentq = (Student*)q;
+	Student* studentp = (Student*)p;
+	Student* studentq = (Student*)q;
 
-	int sump = get_sum(Studentp);
-	int sumq = get_sum(Studentq);
+	int sump = get_sum(studentp);
+	int sumq = get_sum(studentq);
 
-    return (sumq - sump);
+	if(sumq == sump){
+		return (strcmp(studentp->name, studentq->name));
+	}else{
+		return (sumq - sump);
+	}
 }
 
 void printArr(Student arr[], int n)
@@ -108,22 +111,20 @@ void printArr(Student arr[], int n)
 }
 
 void list(Node* head, int n){
-	printf("hi\n");
 	Student std[100];
 	Node* ptr = head;
 	int i = 0;
 	while (ptr != NULL){
 		std[i] = ptr->std;
 		ptr = ptr->next;
-		// printf("i: %d, std[i]: %d\n",i,std[i].score1);
 		i++;
 	}
-	printArr(std, i);
 	qsort((void*)std, i, sizeof(std[0]), comparator);
-	printArr(std, i);
+	printArr(std, n);
 }
 
 int main(){
+	//done
 	int n = n_num();
 	Node* ptr = NULL;
 	Node* head = NULL;
@@ -164,35 +165,5 @@ int main(){
 			list(head,n);
 		}
 	}
-
-	printf("\noutput:\n");
-	ptr = head;
-	while (ptr != NULL){
-		print_user(ptr);
-		ptr = ptr->next;
-	}
-
     return 0;
 }
-
-/*
-int cmp(student1, student2) {
-	if ... return +1
-	if ... return -1
-	return 0
-}
-
-void list(k) {
-	Student arr[100];
-	...
-	while ...:
-		arr[i] = ptr
-		ptr = ptr->next
-
-
-	quicksort(arr, ..., cmp, ...)
-
-	for i 0...k :
-		print(arr[i].name)
-}
-*/
