@@ -1,0 +1,12 @@
+5
+Andy 85 86 87 88 98
+Ben 65 85 93 78 62
+Ken 67 76 85 95 88
+Sam 65 75 85 95 65
+Lisa 95 94 93 92 91
+5
+query 1
+list 3
+add Bert 100 60 100 60 100
+query 1
+list 3
