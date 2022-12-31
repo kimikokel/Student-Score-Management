@@ -19,7 +19,6 @@ typedef struct node{
 Node *head = NULL;
 
 int n_num(){
-	// printf("n: \n");
 	int buff;
 	scanf("%d",&buff);
 	return buff;
@@ -29,7 +28,6 @@ Node* add_user() {
 	Node* node = (Node*)malloc(sizeof(Node));
 	node->next = NULL;
 
-	// printf("Enter student name and scores:\n");
 	scanf("%s %d %d %d %d %d", 
 		node->std.name, 
 		&(node->std.score1),
