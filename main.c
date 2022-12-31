@@ -120,7 +120,7 @@ void list(Node* head, int n){
 		i++;
 	}
 	qsort((void*)std, i, sizeof(std[0]), comparator);
-	printf("find me and del this then done ;)");
+	printf("find me and del this then done ;)\n");
 	printArr(std, n);
 }
 
