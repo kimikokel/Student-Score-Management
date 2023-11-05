@@ -1,4 +1,3 @@
 # Student-Score-Management
-Ada's rubbish ntu hw     
-chiu ging  
-done ;)  
+C programming assignment
+tw ntu
